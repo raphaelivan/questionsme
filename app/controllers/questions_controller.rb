@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :view]
+  skip_filter :authenticate_user!, only: [:view]
 
   # GET /questions
   # GET /questions.json

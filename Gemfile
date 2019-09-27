@@ -6,6 +6,7 @@ ruby '2.5.1'
 gem 'rails', '4.2.11'
 gem 'sqlite3', '~> 1.3.13'
 gem 'nested_form', '~> 0.3.2'
+gem 'devise'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'sass', '~> 3.2.0'
