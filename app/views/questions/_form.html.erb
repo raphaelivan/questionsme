@@ -1,33 +1,46 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+<p id="notice"><%= notice %></p>
 
-      <ul>
-      <% @question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= nested_form_for(@question, html: { role: 'form' }) do |f| %>
+  <%= render 'shared/errors', :resource => @question %>
+  <div class="masonry-item col-md-12" style="">
+    <div class="bgc-white p-20 bd">
+      <h6 class="c-grey-900">Nome do Questionário</h6>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control  btn-lg", placeholder: "Nome do Questionário" %>
+        <small id="emailHelp" class="form-text text-muted">Este nome será pública a todos que forem responder</small>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :description, class: "form-control  btn-lg", placeholder: "Descritivo sobre o questionário" %>
+        <small id="emailHelp" class="form-text text-muted">Esta descrição será será pública a todos que forem responder</small>
+      </div>
+
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
+  <br>
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+      <h6 class="c-grey-900">Adicionar Perguntas</h6>
+      <%= f.fields_for :asks do |d| %>
+        <%= render "questions/ask", { f: f, d: d } %>
+      <% end %>
+      <div class='form-group'>
+        <%= f.link_to_add raw("<i class='fa fa-question'> </i> Adicionar Pergunta"), :asks,  class:"btn cur-p btn-primary" %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+
+  <br>
+  <div class="col-sm-10">
+    <button type="submit" class='btn btn-success'>Salvar Questionário</button></div>
   </div>
-  <div class="field">
-    <%= f.label :open %><br>
-    <%= f.check_box :open %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.number_field :type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <br>
 <% end %>
+
+<!--<div class="masonry-item col-md-12">
+  <div class="bgc-white p-20 bd">
+
+  </div>
+
+  <br>
+</div>-->

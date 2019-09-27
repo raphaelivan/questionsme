@@ -1,27 +1,41 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Companies</h1>
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                <h4 class="c-grey-900 mB-20">Empresas</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Setores</th>
+                            <th scope="col">Funcionários</th>
+                            <th scope="col">Questionários</th>
+                            <th colspan='2'> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- Company.all.each do |company| %>
+                        <tr>
+                            <th scope="row"><%= link_to company.id, company%></th>
+                            <td><%= company.name %></td>
+                            <td><%= company.sectors.count %></td>
+                            <td><%= company.employees.count %></td>
+                            <td><%= company.questions.count %></td>
+                            <td><%= link_to 'Editar', edit_company_path(company) %></td>
+                            <td><%= link_to 'Deletar', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        </tr>
+                        <% end %>  
+                    </tbody>
+                </table>
+            </div>
+            <%= link_to 'Cadastrar Empresa', new_company_path, class: 'btn btn-success' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        </div>
+    </div>
+</div>
+</div>
 
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.name %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Company', new_company_path %>

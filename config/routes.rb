@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'home/index'
 
   root :to => "home#index"
-  resources :questions
+  resources :questions do
+    get :view, on: :member
+  end
+  
   resources :sectors
   resources :employees
   # The priority is based upon order of creation: first created -> highest priority.

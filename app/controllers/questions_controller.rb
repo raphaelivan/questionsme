@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :view]
 
   # GET /questions
   # GET /questions.json
@@ -61,14 +61,26 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def view
+    View.create! ip: request.remote_ip, employee_id: nil
+    
+    render layout: 'question_view'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params[:id])
+      @question = Question.find_by_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:company, :name, :open, :type)
+      params.require(:question).permit(
+        :company, :name, :open, :type, :description,
+        asks_attributes: [ 
+          :description, :_destroy, :id, 
+          options_attributes: [ :description, :weight, :_destroy, :id]
+        ]
+      )
     end
 end

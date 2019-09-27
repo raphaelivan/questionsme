@@ -1,21 +1,18 @@
-<%= form_for(@company) do |f| %>
-  <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% @company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <p id="notice"><%= notice %></p>
+  <h6 class="c-grey-900">Cadastrar Empresas</h6>
+  <div class="mT-30">
+  <%= form_for(@company) do |f| %>
+    <%= render 'shared/errors', :resource => @company %>
+
+    <div class="form-group row">
+      <%= f.label :name, class:"col-sm-2 col-form-label"%><br>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control", placeholder: 'Nome da Empresa'%>
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <button type="submit" class='btn btn-success'>Salvar</button></div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

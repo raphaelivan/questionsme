@@ -1,33 +1,46 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Questions</h1>
+            <main class="main-content bgc-grey-100">
+                <div id="mainContent">
+                    <div class="container-fluid">
+                        <p id="notice"><%= notice %></p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                                    <h4 class="c-grey-900 mB-20">Perguntas</h4>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Título</th>
+                                                <th scope="col">Perguntas</th>
+                                                <th scope="col">Ativa</th>
+                                                <th colspan='3'> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          <%- Question.all.each do |question| %>
+                                            <tr>
+                                              <th scope="row"><%= link_to question.id, question %></th>
+                                              <td><%= question.name %></td>
+                                              <td><%= question.asks.count %></td>
+                                              <td><%= yes_or_no question.open %></td>
+                                              <td><%= link_to 'Editar', edit_question_path(question) %></td>
+                                              <td><%= link_to 'Deletar', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                            </tr>
+                                          <% end %>  
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <%= link_to 'Cadastrar Questionário', new_question_path, class: 'btn btn-success' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Company</th>
-      <th>Name</th>
-      <th>Open</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.company %></td>
-        <td><%= question.name %></td>
-        <td><%= question.open %></td>
-        <td><%= question.type %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+    </div>
 
-<br>
 
-<%= link_to 'New Question', new_question_path %>
+

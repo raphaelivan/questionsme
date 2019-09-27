@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190927191824) do
+ActiveRecord::Schema.define(version: 20190927203851) do
+
+  create_table "asks", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "asks", ["question_id"], name: "index_asks_on_question_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +29,7 @@ ActiveRecord::Schema.define(version: 20190927191824) do
   end
 
   create_table "employees", force: :cascade do |t|
+    t.string   "name"
     t.date     "born"
     t.string   "sex"
     t.string   "email"
@@ -30,17 +40,29 @@ ActiveRecord::Schema.define(version: 20190927191824) do
 
   add_index "employees", ["sector_id"], name: "index_employees_on_sector_id"
 
+  create_table "options", force: :cascade do |t|
+    t.string   "description"
+    t.integer  "weight"
+    t.integer  "ask_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "options", ["ask_id"], name: "index_options_on_ask_id"
+
   create_table "questions", force: :cascade do |t|
-    t.integer  "company_id"
+    t.string   "slug"
     t.string   "name"
+    t.text     "description"
     t.boolean  "open"
     t.integer  "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "questions", ["name"], name: "index_questions_on_name"
   add_index "questions", ["open"], name: "index_questions_on_open"
+  add_index "questions", ["slug"], name: "index_questions_on_slug"
   add_index "questions", [nil], name: "index_questions_on_compny_id"
 
   create_table "sectors", force: :cascade do |t|

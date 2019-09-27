@@ -1,14 +1,11 @@
 <p id="notice"><%= notice %></p>
-<div class="peers ai-c jc-sb pX-40 pY-30">
-    <div class="peers peer-greed">
-        <div class="peer"><small><%= @question.created_at.to_s(:pt) %></small>
-            <h5 class="c-grey-900 mB-5"><%= @question.name %></h5>
-        </div>
-    </div>
-    <div class="peer"><a href="/questions" class="btn btn-danger bdrs-50p p-15 lh-0"><i class="fa fa-reply"></i></a></div>
-</div>
+<h1 class="text-center c-grey-900 mB-5"><%= @question.name %></h1>
+<h6 class="text-center">"<%= @question.description %>"</h6>
+
+
+<br><hr><br>
 <%- @question.asks.each_with_index do |ask, index| %>
-  <div class="bdT pX-40 pY-30">
+  <div class="">
     <h5><%= "#{index + 1}a #{ask.description}" %></h5>
     <strong> Opções: </strong>
     <%- ask.options.each do |option| %>
@@ -22,5 +19,4 @@
     <% end %>
   </div>
 <% end %>
-<%= link_to 'Editar Questionário', edit_question_path(@question), class: 'btn btn-primary'%> |
-<%= link_to 'Voltar', questions_path %>
+<%= link_to 'Responder Questionário', edit_question_path(@question), class: 'btn btn-primary'%> |

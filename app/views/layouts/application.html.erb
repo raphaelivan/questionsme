@@ -59,8 +59,13 @@
             </ul>
         </div>
     </div>
-
-    <%= yield %>
+      <main class="main-content bgc-grey-100">
+        <div id="mainContent">
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+      </main>
     <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Labor Fit</span>
 
     
@@ -84,7 +89,7 @@
   </script>
   </footer>
   </div></div>
-      <%= javascript_include_tag "vendor", 'bundle' %>
+      <%= javascript_include_tag 'jquery-2.1.1.min', 'nested_form', "vendor", 'bundle'  %>
 
   <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="2cb168958d3ab00694f95ca6-|49" defer=""></script>
 </body>

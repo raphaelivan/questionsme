@@ -1,3 +1,4 @@
+//= require jquery_nested_form
 
 // Self Initialize DOM Factory Components
 domFactory.handler.autoInit()

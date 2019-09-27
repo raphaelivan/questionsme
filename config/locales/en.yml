@@ -1,23 +1,43 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "%{model} não pôde ser salvo: 1 erro"
+          other: "%{model} não pôde ser salvo: %{count} erros."
+        body: "Por favor, cheque os seguintes campos:"
+
+      messages:
+        record_invalid: "Registro inválido"
+        inclusion: "não está incluso na lista"
+        exclusion: "não está disponível"
+        in_use: "Já existe um lançamento com esse número"
+        invalid: "não é válido"
+        date_end_invalid: "é menor que a data inicial"
+        confirmation: "não bate com a confirmação"
+        accepted: "precisa ser aceito"
+        empty: "não pode ser vazio"
+        blank: "não pode ser vazio"
+        too_long: "é muito longo (não mais do que %{count} caracteres)"
+        too_short: "é muito curto (não menos do que %{count} caracteres)"
+        wrong_length: "não é do tamanho correto (precisa ter %{count} caracteres)"
+        taken: "não está disponível"
+        not_a_number: "não é um número"
+        greater_than: "precisa ser maior do que %{count}"
+        greater_than_or_equal_to: "precisa ser maior ou igual a %{count}"
+        equal_to: "precisa ser igual a %{count}"
+        less_than: "precisa ser menor do que %{count}"
+        less_than_or_equal_to: "precisa ser menor ou igual a %{count}"
+        odd: "precisa ser ímpar"
+        even: "precisa ser par"
+        carrierwave_processing_error: 'OOPS! Não conseguir redefinir a imagem.'
+        carrierwave_integrity_error: 'Há ! Isso não é uma imagem.'
+        invalid_currency: 'Formato inválido'
+        not_found: Não Encontrado
+        plan_ha_total: vai ultrapassar o limite de hectares do seu plano <a href='/plan_upgrade' class='btn btn-sm btn-primary'> Atualizar número de hectares(HA) </a>
+    models:
+      company: Empresa
+    attributes: 
+      company:
+        nane: "Nome da Empresa"

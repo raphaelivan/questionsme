@@ -1,0 +1,14 @@
+<div class="form-group">
+  <%= d.text_field :description, class: "form-control  btn-lg", placeholder: "Pergunta" %>
+</div>
+<hr>
+
+<div class="mT-30">
+  <%= d.fields_for :options do |e| %>
+    <%= render "questions/option", { d: d, e: e } %>
+  <% end %>
+  <div class='form-group'>
+    <%= d.link_to_add '+ Opção', :options %>
+  </div>
+</div>
+<hr>
