@@ -1,0 +1,26 @@
+{
+  "name": "agend",
+  "version": "1.0.0",
+  "description": "== README",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap": "4.0.0-beta.2",
+    "dom-factory": "1.0.0",
+    "jquery": "^3.3.1",
+    "material-design-icons-iconfont": "^3.0.3",
+    "material-design-kit": "^1.0.0-alpha.24",
+    "popper.js": "^1.12.5",
+    "sidebar-style-guide": "^2.0.0",
+    "simplebar": "^3.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
