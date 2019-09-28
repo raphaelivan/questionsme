@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20190928003402) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "asks", force: :cascade do |t|
     t.text     "description"
     t.integer  "question_id"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "asks", ["question_id"], name: "index_asks_on_question_id"
+  add_index "asks", ["question_id"], name: "index_asks_on_question_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.integer  "user_id"
   end
 
-  add_index "companies", ["user_id"], name: "index_companies_on_user_id"
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.integer  "user_id"
   end
 
-  add_index "employees", ["user_id"], name: "index_employees_on_user_id"
+  add_index "employees", ["user_id"], name: "index_employees_on_user_id", using: :btree
 
   create_table "options", force: :cascade do |t|
     t.string   "description"
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "options", ["ask_id"], name: "index_options_on_ask_id"
+  add_index "options", ["ask_id"], name: "index_options_on_ask_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "slug"
@@ -63,10 +66,9 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "questions", ["name"], name: "index_questions_on_name"
-  add_index "questions", ["open"], name: "index_questions_on_open"
-  add_index "questions", ["slug"], name: "index_questions_on_slug"
-  add_index "questions", [nil], name: "index_questions_on_compny_id"
+  add_index "questions", ["name"], name: "index_questions_on_name", using: :btree
+  add_index "questions", ["open"], name: "index_questions_on_open", using: :btree
+  add_index "questions", ["slug"], name: "index_questions_on_slug", using: :btree
 
   create_table "sectors", force: :cascade do |t|
     t.string   "name"
@@ -76,12 +78,24 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.string   "email",      default: "", null: false
   end
 
-  add_index "sectors", ["company_id"], name: "index_sectors_on_company_id"
-  add_index "sectors", ["email"], name: "index_sectors_on_email"
-  add_index "sectors", ["name"], name: "index_sectors_on_name"
+  add_index "sectors", ["company_id"], name: "index_sectors_on_company_id", using: :btree
+  add_index "sectors", ["email"], name: "index_sectors_on_email", using: :btree
+  add_index "sectors", ["name"], name: "index_sectors_on_name", using: :btree
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "root",                   default: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["root"], name: "index_users_on_root", using: :btree
 
   create_table "views", force: :cascade do |t|
     t.string   "ip"
@@ -90,6 +104,9 @@ ActiveRecord::Schema.define(version: 20190928003402) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "views", ["employee_id"], name: "index_views_on_employee_id"
+  add_index "views", ["employee_id"], name: "index_views_on_employee_id", using: :btree
 
+  add_foreign_key "asks", "questions"
+  add_foreign_key "options", "asks"
+  add_foreign_key "views", "employees"
 end

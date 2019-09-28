@@ -3,7 +3,7 @@ set :production
 server '198.58.123.31', user: 'vando', roles: %w{web app db}
 
 set :application, 'questions'
-set :repo_url, "https://git.heroku.com/gentle-hamlet-01543.git"
+set :repo_url, "git@198.58.123.31:questions.git"
 set :branch, 'master'
 
 set :rollbar_env, :production
