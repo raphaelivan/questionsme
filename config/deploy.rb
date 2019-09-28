@@ -19,6 +19,7 @@ set :format_options, command_output: true, log_file: "log/capistrano.log", color
 
 # Default value for :pty is false
 set :pty, true
+set :bundle_without, %w{development test}.join(' ')             # this is default
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml"
