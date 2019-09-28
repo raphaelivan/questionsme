@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <strong> Empresa:</strong>
+  <%= @sector.company.name %>
+</p>
 
 <p>
-  <strong>Name:</strong>
+  <strong> Nome do Grupo:</strong>
   <%= @sector.name %>
 </p>
 
 <p>
-  <strong>References:</strong>
-  <%= @sector.references %>
+  <strong> Email de Comunicação:</strong>
+  <%= @sector.email %>
 </p>
 
-<%= link_to 'Edit', edit_sector_path(@sector) %> |
-<%= link_to 'Back', sectors_path %>
+
+<%= link_to 'Editar ', edit_company_sector_path(@sector.company, @sector), class: 'btn btn-success'%> |
+<%= link_to 'Voltar', company_sectors_path, class: 'btn btn-info'%>

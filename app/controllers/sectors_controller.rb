@@ -4,7 +4,8 @@ class SectorsController < ApplicationController
   # GET /sectors
   # GET /sectors.json
   def index
-    @sectors = Sector.all
+    @company = Company.find(params[:company_id])
+    @sectors = @company.sectors
   end
 
   # GET /sectors/1
@@ -14,7 +15,8 @@ class SectorsController < ApplicationController
 
   # GET /sectors/new
   def new
-    @sector = Sector.new
+    company = Company.find(params[:company_id])
+    @sector = company.sectors.new
   end
 
   # GET /sectors/1/edit
@@ -24,11 +26,12 @@ class SectorsController < ApplicationController
   # POST /sectors
   # POST /sectors.json
   def create
-    @sector = Sector.new(sector_params)
+    company = Company.find(params[:sector][:company_id])
+    @sector = company.sectors.new(sector_params)
 
     respond_to do |format|
       if @sector.save
-        format.html { redirect_to @sector, notice: 'Sector was successfully created.' }
+        format.html { redirect_to company_sector_path(company, @sector), notice: 'Sector was successfully created.' }
         format.json { render :show, status: :created, location: @sector }
       else
         format.html { render :new }
@@ -63,12 +66,12 @@ class SectorsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_sector
+    def set_sector      
       @sector = Sector.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sector_params
-      params.require(:sector).permit(:name, :references)
+      params.require(:sector).permit(:name, :email, :company_id)
     end
 end

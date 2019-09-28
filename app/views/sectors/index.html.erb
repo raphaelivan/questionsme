@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Sectors</h1>
+    <p id="notice"><%= notice %></p>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bgc-white bd bdrs-3 p-20 mB-20">
+                <h4 class="c-grey-900 mB-20">Grupo de Pesquisa</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome do Grupo</th>
+                            <th scope="col">Usuários</th>
+                            <th scope="col">Taxa De Abertura</th>
+                            <th colspan='2'> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%- Sector.all.each do |sector| %>
+                        <tr>
+                            <th scope="row"><%= link_to sector.id, sector%></th>
+                            <td><%= sector.name %></td>
+                            <td><%= 0 %></td>
+                            <td>0%</td>
+                            <td><%= link_to 'Editar Grupo', edit_sector_path(sector) %></td>
+                            <td><%= link_to 'Deletar Grupo', sector, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+                        </tr>
+                        <% end %>  
+                    </tbody>
+                </table>
+            </div>
+            <%= link_to 'Cadastrar Grupo de Pesquisa', new_company_sector_path(@company), class: 'btn btn-success' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>References</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        </div>
+    </div>
+</div>
+</div>
 
-  <tbody>
-    <% @sectors.each do |sector| %>
-      <tr>
-        <td><%= sector.name %></td>
-        <td><%= sector.references %></td>
-        <td><%= link_to 'Show', sector %></td>
-        <td><%= link_to 'Edit', edit_sector_path(sector) %></td>
-        <td><%= link_to 'Destroy', sector, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Sector', new_sector_path %>

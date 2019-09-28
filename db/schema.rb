@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190927225412) do
+ActiveRecord::Schema.define(version: 20190928003402) do
 
   create_table "asks", force: :cascade do |t|
     t.text     "description"
@@ -26,19 +26,22 @@ ActiveRecord::Schema.define(version: 20190927225412) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "companies", ["user_id"], name: "index_companies_on_user_id"
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.date     "born"
     t.string   "sex"
     t.string   "email"
-    t.integer  "sector_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  add_index "employees", ["sector_id"], name: "index_employees_on_sector_id"
+  add_index "employees", ["user_id"], name: "index_employees_on_user_id"
 
   create_table "options", force: :cascade do |t|
     t.string   "description"
@@ -68,25 +71,17 @@ ActiveRecord::Schema.define(version: 20190927225412) do
   create_table "sectors", force: :cascade do |t|
     t.string   "name"
     t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "email",      default: "", null: false
   end
 
   add_index "sectors", ["company_id"], name: "index_sectors_on_company_id"
+  add_index "sectors", ["email"], name: "index_sectors_on_email"
   add_index "sectors", ["name"], name: "index_sectors_on_name"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+# Could not dump table "users" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "views", force: :cascade do |t|
     t.string   "ip"

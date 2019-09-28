@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-
-
-ruby '2.5.1'
 gem 'rails', '4.2.11'
 gem 'sqlite3', '~> 1.3.13'
 gem 'nested_form', '~> 0.3.2'
@@ -21,6 +18,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano-rails', '1.4.0'
+  gem 'capistrano', '~>3.1'
 end
 gem 'sprockets', '~> 2.8'
 group :assets do

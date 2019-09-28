@@ -1,1 +1,1 @@
-json.array! @employees, partial: 'employees/employee', as: :employee
+json.array! @companies, partial: "companies/company", as: :company

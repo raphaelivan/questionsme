@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Born:</strong>
-  <%= @employee.born %>
-</p>
-
-<p>
-  <strong>Sex:</strong>
-  <%= @employee.sex %>
+  <strong>Nome:</strong>
+  <%= @employee.name %>
 </p>
 
 <p>
@@ -15,5 +10,5 @@
   <%= @employee.email %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to 'Editar Usuário ', edit_employee_path(@employee), class: 'btn btn-success'%> |
+<%= link_to 'Voltar', employees_path, class: 'btn btn-info'%>

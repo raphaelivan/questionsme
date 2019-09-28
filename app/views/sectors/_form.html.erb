@@ -1,25 +1,27 @@
-<%= form_for(@sector) do |f| %>
-  <% if @sector.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
 
-      <ul>
-      <% @sector.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <p id="notice"><%= notice %></p>
+  <div class="mT-30">
+  <%= form_for(@sector) do |f| %>
+    <%= f.hidden_field :company_id, value: @sector.company.id %>
+    <%= render 'shared/errors', :resource => @sector %>
+
+    <div class="form-group row">
+      <%= f.label :name, class:"col-sm-2 col-form-label"%><br>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: "form-control", placeholder: 'Nome do Grupo de Pesquisa'%>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <%= f.label 'Email', class:"col-sm-2 col-form-label"%><br>
+      <div class="col-sm-10">
+        <%= f.text_field :email, class: "form-control", placeholder: 'Informe por qual email será disparado o questionário'%>
+        <small class="form-text text-muted">Email por onde será disparado o questionário</small>
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <button type="submit" class='btn btn-success'>Salvar Questionário</button></div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :references %><br>
-    <%= f.text_field :references %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
