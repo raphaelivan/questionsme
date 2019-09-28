@@ -9,7 +9,7 @@ var sidebarToggle = Array.prototype.slice.call(document.querySelectorAll('[data-
 sidebarToggle.forEach(function (toggle) {
   toggle.addEventListener('click', function (e) {
     var selector = e.currentTarget.getAttribute('data-target') || '#default-drawer'
-    var drawer = document.querySelector(selector)
+    var drawer = document.querySelector(selector);
     if (drawer) {
       drawer.mdkDrawer.toggle()
     }
