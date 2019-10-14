@@ -17,7 +17,7 @@
                     <tbody>
                         <%- @replies.each do |reply| %>
                             <tr>
-                                <td><%= link_to reply.employee.name, employee_path(reply.employee) %> </td>
+                                <td><%= link_to reply.employee.name, question_reply_path(@question, reply) %> </td>
                                 <td> <%= reply.end_at.to_s(:pt_time) if reply.end_at %> </td>
                                 <td> <%= reply.result %> </td>
                             </tr>

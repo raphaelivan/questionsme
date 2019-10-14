@@ -12,7 +12,7 @@ class RepliesController < ApplicationController
     @question = Question.find_by_slug(params[:question_id])
     @reply = @question.replies.find(params[:id])
 
-    @total = @reply.reply_options.map(&:weight).sum
+    @result = (@reply.reply_options.map(&:weight).sum - @reply.employee.years)
   end
 
   # GET /replies/new

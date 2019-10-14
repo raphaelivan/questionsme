@@ -3,7 +3,7 @@
     <div class="peers peer-greed">
         <div class="peer"><small><%= @question.created_at.to_s(:pt) %></small>
             <h5 class="c-grey-900 mB-5"><%= @question.name %> </h5>
-            <span class='h1'> Resultado: <%= @total %></span>
+            <span class='h1'> Sua Idade Em Qualidade de Vida: <strong><%=  @result >= 16 ? @result.round(0) : 16 %> Anos</strong></span>
         </div>
     </div>
     <div class="peer"><a href="#" class="btn btn-danger bdrs-50p p-15 lh-0"><i class="fa fa-reply"></i></a></div>

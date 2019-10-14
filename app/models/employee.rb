@@ -11,6 +11,10 @@ class Employee < ActiveRecord::Base
 
   has_many :replies, dependent: :destroy
 
+  def years
+    (born.year - Time.now.year)
+  end
+  
   private
   def create_password!
     self.password = email.split('@')[0]

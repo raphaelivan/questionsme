@@ -5,7 +5,7 @@ rows = sheet.rows
 rows[2..rows.length].each do |row|
   unless row[0].blank?
     sector, name, born, sex, email = row[1], row[2], row[3], row[4], row[5]
-    c = Company.find(<id>)
+    c = Company.find(1)
     c.sectors.create!({ email: 'laborfit@laborfit.com.br', name: sector}) unless c.sectors.where('name ILIKE ?', sector).any?
 
     c.employees.create!({
@@ -17,4 +17,3 @@ rows[2..rows.length].each do |row|
     })
   end
 end
-
