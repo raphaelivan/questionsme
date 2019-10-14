@@ -1,28 +1,20 @@
-== README
+#IMPORT 
+doc = SimpleXlsxReader.open("#{Rails.root}/public/funcionario.xlsx")
+sheet = doc.sheets.first
+rows = sheet.rows
+rows[2..rows.length].each do |row|
+  unless row[0].blank?
+    sector, name, born, sex, email = row[1], row[2], row[3], row[4], row[5]
+    c = Company.find(<id>)
+    c.sectors.create!({ email: 'laborfit@laborfit.com.br', name: sector}) unless c.sectors.where('name ILIKE ?', sector).any?
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    c.employees.create!({
+      name: name, 
+      sex: sex, 
+      born: born,
+      email: email, 
+      password: email.split('@')[0]      
+    })
+  end
+end
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
