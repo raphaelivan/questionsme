@@ -12,8 +12,8 @@
                             <th scope="col">Email</th>
                             <th scope="col">Grupos</th>
                             <th scope="col">Respostas</th>
-                            <th scope="col">Taxa de Abertura</th>
-                            <th colspan='2'> </th>
+                            <th> </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,15 +24,18 @@
                             <td><%= employee.email %></td>
                             <td></td>
                             <td><%= 0 %></td>
-                            <td><%= link_to 'Editar', edit_employee_path(employee) %></td>
+                            <td><%= link_to 'Editar', edit_company_employee_path(employee.company, employee) %></td>
                             <td><%= link_to 'Deletar', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         </tr>
                         <% end %>  
                     </tbody>
                 </table>
             </div>
-            <%= link_to 'Cadastrar Usuário', new_employee_path, class: 'btn btn-success' %>
-
+            <% if @company %>
+              <%= link_to 'Cadastrar Usuário', new_company_employee_path(@company), class: 'btn btn-success' %>
+						<% else %>
+              <%= link_to 'Ir para empresas', '/companies', class: 'btn btn-success' %>
+            <% end %>
         </div>
     </div>
 </div>

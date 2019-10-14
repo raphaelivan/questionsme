@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :company
-  has_many :asks
+  has_many :asks, dependent: :destroy
   
   accepts_nested_attributes_for :asks, allow_destroy: true
 

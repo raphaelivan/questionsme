@@ -2,6 +2,7 @@
   <p id="notice"><%= notice %></p>
   <div class="mT-30">
   <%= form_for(@employee) do |f| %>
+    <%= f.hidden_field :company_id, value: @employee.company.id %>
     <%= render 'shared/errors', :resource => @employee %>
     <div class='masonry-item col-md-6'>
       <div class="form-group row">
@@ -21,7 +22,7 @@
     
     <div class='masonry-item col-md-6'>
       <div class="form-group row">
-        <%= f.label :email, class:"col-sm-2 col-form-label"%><br>
+        <%= f.label :sex, class:"col-sm-2 col-form-label"%><br>
         <div class="form-check">          
           <label class="form-check-label">
             <%= f.radio_button :sex, value: 'f', class: "form-check-input"%> Mulher

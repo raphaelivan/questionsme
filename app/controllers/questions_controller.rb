@@ -5,7 +5,8 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @company = Company.find(params[:company_id])
+    @questions = @company.questions
   end
 
   # GET /questions/1
@@ -15,7 +16,8 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
+    company = Company.find(params[:company_id])
+    @question = company.questions.build
   end
 
   # GET /questions/1/edit
@@ -25,7 +27,8 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
+    company = Company.find(params[:question][:company_id])
+    @question = company.questions.new(question_params)
 
     respond_to do |format|
       if @question.save

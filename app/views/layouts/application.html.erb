@@ -7,22 +7,22 @@
   <%= stylesheet_link_tag 'application', 'style', media: 'all', 'data-turbolinks-track' => true %>
 </head>
   <body class="app">
-    <% if current_user && current_user.root?  %>
+    <% if logged_user  %>
         <div id="loader">
           <div class="spinner"></div>
         </div>
-          <div><div class="sidebar"><div class="sidebar-inner"><div class="sidebar-logo"><div class="peers ai-c fxw-nw"><div class="peer peer-greed"><a class="sidebar-link td-n" href="index.html" class="td-n"><div class="peers ai-c fxw-nw"><div class="peer">
-          </div></div></a></div><div class="peer">
-          <div class="mobile-toggle sidebar-toggle"><a href="#" class="td-n"><i class="ti-arrow-circle-left"></i></a></div>
+        <div><div class="sidebar"><div class="sidebar-inner"><div class="sidebar-logo"><div class="peers ai-c fxw-nw"><div class="peer peer-greed"><a class="sidebar-link td-n" href="index.html" class="td-n"><div class="peers ai-c fxw-nw"><div class="peer">
+        </div></div></a></div><div class="peer">
+        <div class="mobile-toggle sidebar-toggle"><a href="#" class="td-n"><i class="ti-arrow-circle-left"></i></a></div>
     </div>
     </div>
     </div>
-    <ul class="sidebar-menu scrollable pos-r">
-      <li class="nav-item mT-30 active"><a class="sidebar-link" href="/" default><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Inicio</span></a></li>
-      <li class="nav-item dropdown"><a class="sidebar-link" href="/companies"><span class="icon-holder"><i class="c-indigo-500 ti-bar-chart"></i> </span><span class="title">Empresas</span></a></li>
-      <li class="nav-item"><a class="sidebar-link" href="/questions"><span class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span><span class="title">Questionários</span></a></li>
-      <li class="nav-item dropdown"><a class="sidebar-link" href="/employees"><span class="icon-holder"><i class="c-orange-500 ti-layout-list-thumb"></i> </span><span class="title">Usuários</span></a></li>
-    </ul>
+    <% if current_user %>
+      <ul class="sidebar-menu scrollable pos-r">
+        <li class="nav-item mT-30 active"><a class="sidebar-link" href="/" default><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Inicio</span></a></li>
+        <li class="nav-item dropdown"><a class="sidebar-link" href="/companies"><span class="icon-holder"><i class="c-indigo-500 ti-bar-chart"></i> </span><span class="title">Empresas</span></a></li>
+      </ul>
+    <% end %>
     </div>
     </div>
 
@@ -32,25 +32,9 @@
               <ul class="nav-left">
                   <li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i class="ti-menu"></i></a></li>
               </ul>
-              <ul class="nav-right">
-                  <li class="notifications dropdown"><span class="counter bgc-red">1</span> <a href="#" class="dropdown-toggle no-after" data-toggle="dropdown"><i class="ti-bell"></i></a>
-                      <ul class="dropdown-menu">
-                          <li class="pX-20 pY-15 bdB"><i class="ti-bell pR-10"></i> <span class="fsz-sm fw-600 c-grey-900">Novas Respostas</span></li>
-                          <li>
-                              <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
-                                  <li><a href="#" class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
-                                          <div class="peer mR-15"><img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/1.jpg" alt=""></div>
-                                          <div class="peer peer-greed"><span><span class="fw-500">Pedro Augusto</span> <span class="c-grey-600">Respondeu <span class="text-dark"> Pergunta 1</span></span></span>
-                                              <p class="m-0"><small class="fsz-xs">30 minutos atrás</small></p>
-                                          </div>
-                                      </a></li>
-                              </ul>
-                          </li>
-                      </ul>
-                  </li>
-  
+              <ul class="nav-right"> 
                   <li class="dropdown"><a href="#" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
-                          <div class="peer"><span class="fsz-sm c-grey-900"><%= current_user.email %></span></div>
+                          <div class="peer"><span class="fsz-sm c-grey-900"><%= logged_user.email %></span></div>
                       </a>
                       <ul class="dropdown-menu fsz-sm">
                           <li><a method='DELETE' href="#" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i class="ti-power-off mR-10"></i> <span>Sair</span></a></li>

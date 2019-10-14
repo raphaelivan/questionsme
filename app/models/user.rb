@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :employees
   has_many :companies
+  has_many :questions
 
   def root?
     root

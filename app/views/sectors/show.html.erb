@@ -16,4 +16,4 @@
 
 
 <%= link_to 'Editar ', edit_company_sector_path(@sector.company, @sector), class: 'btn btn-success'%> |
-<%= link_to 'Voltar', company_sectors_path, class: 'btn btn-info'%>
+<%= link_to 'Voltar', company_sectors_path(@sector.company), class: 'btn btn-info'%>

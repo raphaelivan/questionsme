@@ -1,0 +1,110 @@
+<div class="row gap-20 masonry pos-r">
+  <div class="masonry-sizer col-md-6"></div>
+  <div class="masonry-item w-100">
+      <div class="row gap-20">
+          <div class="col-md-4">
+              <div class="layers bd bgc-white p-20">
+                  <div class="layer w-100 mB-10">
+                      <h6 class="lh-1">Visitas </h6>                                                                
+                  </div>
+                  <div class="layer w-100">
+                      <div class="peers ai-sb fxw-nw">
+                          <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-green-50 c-green-500"><%= View.count %></span></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="layers bd bgc-white p-20">
+                  <div class="layer w-100 mB-10">
+                      <h6 class="lh-1">Questionários</h6>
+                  </div>
+                  <div class="layer w-100">
+                      <div class="peers ai-sb fxw-nw">
+                          <div class="peer peer-greed"><span id="sparklinedash2"></span></div>
+                          <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-red-50 c-red-500"><%= Question.count %></span></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="layers bd bgc-white p-20">
+                  <div class="layer w-100 mB-10">
+                      <h6 class="lh-1">Respostas</h6>
+                  </div>
+                  <div class="layer w-100">
+                      <div class="peers ai-sb fxw-nw">
+                          <div class="peer peer-greed"><span id="sparklinedash3"></span></div>
+                          <div class="peer"><span class="d-ib lh-0 va-m fw-600 bdrs-10em pX-15 pY-15 bgc-purple-50 c-purple-500"><%= Company.count %></span></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="masonry-item col-md-6">
+      <div class="bd bgc-white">
+          <div class="layers">
+              <div class="layer w-100 p-20">
+                  <h6 class="lh-1">Ultimas Respostas</h6>
+              </div>
+              <div class="layer w-100">
+                  <div class="bgc-light-blue-500 c-white p-20">
+                      <div class="peers ai-c jc-sb gap-40">
+                          <div class="peer peer-greed">
+                              <h5>27 Setembro</h5>
+                              <p class="mB-0">Raphael Ivan</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="table-responsive p-20">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th class="bdwT-0">Empresa</th>
+                                  <th class="bdwT-0">Questinário</th>
+                                  <th class="bdwT-0">Data</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          <% 1.upto(8).each do |i| %>
+                              <tr>
+                                  <td class="fw-600">Liberty</td>
+                                  <td><span class="badge bgc-red-50 c-red-700 p-10 lh-0 tt-c badge-pill"><%= "Q10#{i}" %></span></td>
+                                  <td>27 Setembro</td>
+                              </tr>
+                          <% end %>
+
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+          <div class="ta-c bdT w-100 p-20"><a href="#">Ver todas as Respostas</a></div>
+      </div>
+  </div>
+  <div class="masonry-item col-md-6" style="position: absolute; left: 50%; top: 708px;">
+  <div class="bd bgc-white p-20">
+  <div class="layers">
+      <div class="layer w-100 mB-10"><h6 class="lh-1">Questionários Abertos</h6>
+  </div>
+  <div class="layer w-100"><ul class="list-task list-group" data-role="tasklist">
+      <%- Question.all.each do |question| %>
+      <li class="list-group-item bdw-0" data-role="task">
+          <div class="peers ai-c">
+          <label for="" class="peers peer-greed js-sb ai-c">
+              <span class="peer peer-greed"><%= question.name %></span> 
+              <span class="peer">
+              <span class="badge badge-pill fl-r badge-warning lh-0 p-10">10 respostas</span>
+              </span>
+          </label>
+          </div>
+      </li>
+      <% end %>
+  </ul>
+  </div>
+</div>
+</div>
+</div>
+</div>

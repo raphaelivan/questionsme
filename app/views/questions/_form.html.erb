@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <%= nested_form_for(@question, html: { role: 'form' }) do |f| %>
+  <%= f.hidden_field :company_id, value: @question.company.id %>
   <%= render 'shared/errors', :resource => @question %>
+
   <div class="masonry-item col-md-12" style="">
     <div class="bgc-white p-20 bd">
       <h6 class="c-grey-900">Nome do Questionário</h6>

@@ -4,6 +4,7 @@ gem 'rails', '~> 4.1'
 gem 'nested_form', '~> 0.3.2'
 gem 'devise', '~> 4.4'
 gem 'pg', '~> 0.18.4'
+gem 'simple_xlsx_reader'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'sass', '~> 3.2.0'

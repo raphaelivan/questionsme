@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%- Sector.all.each do |sector| %>
+                        <%- @company.sectors.each do |sector| %>
                         <tr>
                             <th scope="row"><%= link_to sector.id, sector%></th>
                             <td><%= sector.name %></td>

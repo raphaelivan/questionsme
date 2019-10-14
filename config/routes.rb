@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :employees, path: 'employees'
   devise_for :users
 
   resources :companies do 
     get 'home/index'
     resources :sectors
+    resources :employees
+
+    resources :questions do
+      get :view, on: :member
+    end
   end 
 
   root :to => "home#index"
