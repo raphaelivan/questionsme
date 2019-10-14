@@ -7,7 +7,6 @@
 </head>
   <body class="app">
     <% if logged_user  %>
-      <div id="loader"><div class="spinner"></div></div>
       <div><div class="sidebar"><div class="sidebar-inner"><div class="sidebar-logo"><div class="peers ai-c fxw-nw"><div class="peer peer-greed"><a class="sidebar-link td-n" href="index.html" class="td-n"><div class="peers ai-c fxw-nw"><div class="peer">
       </div></div></a></div><div class="peer">
       <div class="mobile-toggle sidebar-toggle"><a href="#" class="td-n"><i class="ti-arrow-circle-left"></i></a></div>
@@ -15,9 +14,9 @@
       </div>
       </div>
       <ul class="sidebar-menu scrollable pos-r">
-        <li class="nav-item mT-30 active"><a class="sidebar-link" href="/" default><span class="icon-holder"><i class="c-blue-500 ti-home"></i> </span><span class="title">Inicio</span></a></li>
+        <li class="nav-item mT-30 active"><a class="sidebar-link" href="/" default><span class="icon-holder"></span><span class="title">Inicio</span></a></li>
         <% if current_user %>
-          <li class="nav-item dropdown"><a class="sidebar-link" href="/companies"><span class="icon-holder"><i class="c-indigo-500 ti-bar-chart"></i> </span><span class="title">Empresas</span></a></li>
+          <li class="nav-item dropdown"><a class="sidebar-link" href="/companies"><span class="icon-holder"> </span><span class="title">Empresas</span></a></li>
         <% end %>
       </ul>
     </div>
@@ -51,25 +50,7 @@
     </main>
     <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2017 Labor Fit</span>
 
-    
-  <script type="2cb168958d3ab00694f95ca6-text/javascript">
-    window.addEventListener('load', () => {
-      const loader = document.getElementById('loader');
-      setTimeout(() => {
-        loader.classList.add('fadeOut');
-      }, 300);
-    });
-    </script>
-
-
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="2cb168958d3ab00694f95ca6-text/javascript"></script>
-<script type="2cb168958d3ab00694f95ca6-text/javascript">
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-  </script>
   </footer>
   </div></div>
       <%= javascript_include_tag 'jquery-2.1.1.min', 'nested_form', "vendor", 'bundle'  %>
