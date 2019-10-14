@@ -21,13 +21,13 @@
                             <th scope="row"><%= link_to company.id, company%></th>
                             <td><%= company.name %></td>
                             <td class="nav-item dropdown">
-                              <a class="sidebar-link" href="<%= company_sectors_path(company) %>"><span class="icon-holder"> </span><span class="title">Grupos de Pesquisa</span></a>
+                              <a class="sidebar-link" href="<%= company_sectors_path(company) %>"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Grupos de Pesquisa</span></a>
                             </td>
                             <td class="nav-item dropdown">
-                              <a class="sidebar-link" href="<%= company_questions_path(company) %>"><span class="icon-holder"> </span><span class="title">Questionários</span></a>
+                              <a class="sidebar-link" href="<%= company_questions_path(company) %>"><span class="icon-holder"><i class="c-brown-500 ti-email"></i> </span><span class="title">Questionários</span></a>
                             </td>
                             <td class="nav-item dropdown">
-                              <a class="sidebar-link" href="<%= company_employees_path(company) %>"><span class="icon-user"></span><span class="title">Usuários</span></a>
+                              <a class="sidebar-link" href="<%= company_employees_path(company) %>"><span class="icon-user"><i class="c-brown-500 ti-user"></i> </span><span class="title">Usuários</span></a>
                             </td>
                             <td><%= link_to 'Editar', edit_company_path(company) %></td>
                             <td><%= link_to 'Deletar', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
