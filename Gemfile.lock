@@ -200,7 +200,6 @@ DEPENDENCIES
   sass (~> 3.2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  spring
   spring-watcher-listen (~> 2.0.0)
   sprockets (~> 2.8)
   turbolinks (= 5.2.1)

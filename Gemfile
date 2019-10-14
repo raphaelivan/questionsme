@@ -16,7 +16,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'capistrano-rails', '1.4.0'
   gem 'capistrano', '~>3.1'
