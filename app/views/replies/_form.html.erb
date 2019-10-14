@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<div class="peers ai-c jc-sb pX-40 pY-30">
+    <div class="peers peer-greed">
+            <h5 class="c-grey-900 mB-5"><%= @question.name %></h5>
+        </div>
+    </div>
+</div>
+<%= form_tag '/replies', method: 'POST' %>
+  <%= hidden_field_tag :question, @question.slug %>
+  <%- @question.asks.each_with_index do |ask, index| %>
+    <div class="bdT pX-40 pY-30">
+      <h5><%= "#{index + 1}a #{ask.description}" %></h5>
+      <strong> Opções: </strong>
+      <%- ask.options.each do |option| %>
+        <div class='mL-30 peers ai-c'>
+          <label for="" class="peers peer-greed js-sb ai-c">
+            <input type='radio' class='checkbox checkbox-circle checkbox-success' name="<%=ask.id%>" value="<%=option.id%>" style='margin-right: 10px'/>
+            <span class="peer peer-greed">
+              <%= option.description %></strong>        
+            </span>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <button type='submit' class='btn btn-xl btn-success'> Finalizar Questionário </submit>
+</form>

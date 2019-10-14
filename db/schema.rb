@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191014011453) do
+ActiveRecord::Schema.define(version: 20191014041528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,32 @@ ActiveRecord::Schema.define(version: 20191014011453) do
   add_index "questions", ["open"], name: "index_questions_on_open", using: :btree
   add_index "questions", ["slug"], name: "index_questions_on_slug", using: :btree
 
+  create_table "replies", force: :cascade do |t|
+    t.integer  "employee_id"
+    t.integer  "question_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "open"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "replies", ["employee_id"], name: "index_replies_on_employee_id", using: :btree
+  add_index "replies", ["open"], name: "index_replies_on_open", using: :btree
+  add_index "replies", ["question_id"], name: "index_replies_on_question_id", using: :btree
+
+  create_table "reply_options", force: :cascade do |t|
+    t.integer  "reply_id"
+    t.integer  "ask_id"
+    t.integer  "option_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reply_options", ["ask_id"], name: "index_reply_options_on_ask_id", using: :btree
+  add_index "reply_options", ["option_id"], name: "index_reply_options_on_option_id", using: :btree
+  add_index "reply_options", ["reply_id"], name: "index_reply_options_on_reply_id", using: :btree
+
   create_table "sectors", force: :cascade do |t|
     t.string   "name"
     t.integer  "company_id"
@@ -122,5 +148,10 @@ ActiveRecord::Schema.define(version: 20191014011453) do
 
   add_foreign_key "asks", "questions"
   add_foreign_key "options", "asks"
+  add_foreign_key "replies", "employees"
+  add_foreign_key "replies", "questions"
+  add_foreign_key "reply_options", "asks"
+  add_foreign_key "reply_options", "options"
+  add_foreign_key "reply_options", "replies"
   add_foreign_key "views", "employees"
 end

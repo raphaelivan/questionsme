@@ -9,11 +9,10 @@ class Employee < ActiveRecord::Base
   before_save :create_password!
   belongs_to :company
 
+  has_many :replies, dependent: :destroy
+
   private
   def create_password!
     self.password = email.split('@')[0]
-    puts '-' * 80
-    puts self.password
-    puts '-' * 80
   end
 end

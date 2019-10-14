@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   root :to => "home#index"
   resources :questions do
     get :view, on: :member
+    resources :replies
   end
   
   resources :sectors
+  resources :replies
   resources :employees
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

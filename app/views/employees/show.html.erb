@@ -10,5 +10,10 @@
   <%= @employee.email %>
 </p>
 
+<p>
+  <strong>Idade:</strong>
+  <%= (Time.now.year.to_i - @employee.born.year.to_i) %>
+</p>
+
 <%= link_to 'Editar Usuário ', edit_employee_path(@employee), class: 'btn btn-success'%> |
 <%= link_to 'Voltar', employees_path, class: 'btn btn-info'%>

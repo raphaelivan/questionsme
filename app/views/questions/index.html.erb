@@ -13,6 +13,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Título</th>
                                     <th scope="col">Perguntas</th>
+                                    <th scope="col">Respostas</th>
                                     <th scope="col">Ativa</th>
                                     <th colspan='3'> </th>
                                 </tr>
@@ -23,6 +24,7 @@
                                     <th scope="row"><%= link_to question.id, question %></th>
                                     <td><%= question.name %></td>
                                     <td><%= question.asks.count %></td>
+                                    <td><%= link_to question.replies.count, question_replies_path(question) %></td>
                                     <td><%= yes_or_no question.open %></td>
                                     <td><%= link_to 'Editar', edit_question_path(question) %></td>
                                     <td><%= link_to 'Deletar', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>

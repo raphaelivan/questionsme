@@ -10,7 +10,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Grupos</th>
+                            <th scope="col">Idade</th>
                             <th scope="col">Respostas</th>
                             <th> </th>
                             <th> </th>
@@ -22,8 +22,8 @@
                             <th scope="row"><%= link_to employee.id, employee%></th>
                             <td><%= employee.name %></td>
                             <td><%= employee.email %></td>
-                            <td></td>
-                            <td><%= 0 %></td>
+                            <td><%= (Time.now.year.to_i - employee.born.year.to_i) %></td>
+                            <td><%= link_to employee.replies.count, '#'%></td>
                             <td><%= link_to 'Editar', edit_company_employee_path(employee.company, employee) %></td>
                             <td><%= link_to 'Deletar', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         </tr>

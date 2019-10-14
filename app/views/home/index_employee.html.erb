@@ -2,11 +2,25 @@
   <div class="layer w-100 mB-10"><h4 class="lh-1">Questionários</h4></div>
   <div class="layer w-100">
     <ul class="list-task list-group" data-role="tasklist">
-      <%- Question.all.each do |question| %>
+      <%- @questions.each do |question| %>
         <li class="list-group-item bdw-0" data-role="task">
           <div class="peers ai-c">
           <label for="" class="peers peer-greed js-sb ai-c">
-            <span class="peer peer-greed"><%= link_to question.name, question_path(question) %></span> 
+            <span class="peer peer-greed">
+              <%= question.name %>
+            </span> 
+            <span class="peer">
+              <% reply = question.replies.where('employee_id =?', current_employee.try(:id)).first %>
+              <% if reply %>
+                <a href="<%= question_reply_path(question, reply) %>"> 
+                  <span class="badge badge-pill fl-r badge-danger lh-0 p-10">Consultar Respostas</span>
+                </a>
+              <% else %>
+                <a href="<%= new_question_reply_path(question) %>"> 
+                  <span class="badge badge-pill fl-r badge-warning lh-0 p-10">Responder</span>
+                </a>
+              <% end %>
+            </span>
           </label>
           </div>
         </li>

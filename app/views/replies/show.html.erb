@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<div class="peers ai-c jc-sb pX-40 pY-30">
+    <div class="peers peer-greed">
+        <div class="peer"><small><%= @question.created_at.to_s(:pt) %></small>
+            <h5 class="c-grey-900 mB-5"><%= @question.name %> </h5>
+            <span class='h1'> Resultado: <%= @total %></span>
+        </div>
+    </div>
+    <div class="peer"><a href="#" class="btn btn-danger bdrs-50p p-15 lh-0"><i class="fa fa-reply"></i></a></div>
+</div>
+<%- @question.asks.each_with_index do |ask, index| %>
+  <div class="bdT pX-40 pY-30">
+    <h5><%= "#{index + 1}a #{ask.description}" %></h5>
+    <strong> Opções: </strong>
+    <%- ask.options.each do |option| %>
+      <div class='mL-30 peers ai-c'>
+        <label for="inputCall1" class="peers peer-greed js-sb ai-c">
+          <%- employee_reply = option.reply_options.joins(:reply).where('replies.employee_id = ?', current_employee)%> 
+          <% attribute = employee_reply.any? ? 'checked=checked' : ''%>
+          <input disabled='disabled' type='radio' class='checkbox checkbox-circle checkbox-success' <%= attribute %>  style='margin-right: 10px'/>
+          <span class="peer peer-greed">
+            <%= option.description %> </strong>        
+          </span>
+        </label>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= link_to 'Voltar', root_path %>
