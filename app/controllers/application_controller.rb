@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def check_logged_user!
     unless devise_controller?
-      redirect_to '/users/sign_in' unless current_employee or current_user
+      redirect_to '/employees/sign_in' unless current_employee or current_user
     end
   end
 
