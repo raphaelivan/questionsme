@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_employee, only: [:delete, :show, :edit, :update, :destroy]
 
   # GET /employees
   # GET /employees.json
@@ -59,7 +59,7 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Employee was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,15 @@
+<div class='col-md-6 text-center'>
+  <div class='row'>
+    <h4 class='h4'>Esta operação é irreversível e todas as informações lançadas serão deletadas. </h4>
+    <br>
+    <br>
+    <br>
+    <h4 class='text-danger text-center'><%= raw "<p>Deseja deletar este usuário?</p>" %> </h4>
+  </div>
+
+  <div class='row p-10 text-center'>
+    <%= form_for @employee,:html => {:method => :delete} do |f| %>
+      <%=raw delete_or_cancel(f) %>
+    <% end %>
+  </div>
+</div>

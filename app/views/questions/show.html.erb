@@ -23,4 +23,4 @@
   </div>
 <% end %>
 <%= link_to 'Editar Questionário', edit_question_path(@question), class: 'btn btn-primary'%> |
-<%= link_to 'Voltar', questions_path %>
+<%= link_to 'Voltar', company_questions_path(@question.company) %>

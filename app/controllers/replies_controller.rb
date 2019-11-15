@@ -15,6 +15,17 @@ class RepliesController < ApplicationController
     @result = (@reply.reply_options.map(&:weight).sum - @reply.employee.years)
   end
 
+  def delete
+    @reply = Reply.find(params[:id])
+  end
+
+  def destroy
+    @reply = Reply.find(params[:id])
+    @reply.destroy
+    
+    redirect_to root_path
+  end
+
   # GET /replies/new
   def new
     @question = Question.find_by_slug(params[:question_id])

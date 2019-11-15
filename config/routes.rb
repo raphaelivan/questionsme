@@ -19,8 +19,13 @@ Rails.application.routes.draw do
   end
   
   resources :sectors
-  resources :replies
-  resources :employees
+  resources :replies do 
+    get :delete, on: :member
+  end 
+  resources :employees do 
+    get :delete, on: :member
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

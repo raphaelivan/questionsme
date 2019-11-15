@@ -13,11 +13,11 @@
               <% reply = question.replies.where('employee_id =?', current_employee.try(:id)).first %>
               <% if reply %>
                 <a href="<%= question_reply_path(question, reply) %>"> 
-                  <span class="badge badge-pill fl-r badge-danger lh-0 p-10">Consultar Respostas</span>
+                  <span class="badge badge-pill fl-r badge-danger lh-0 p-10">Consultar a Resposta</span>
                 </a>
               <% else %>
                 <a href="<%= new_question_reply_path(question) %>"> 
-                  <span class="badge badge-pill fl-r badge-warning lh-0 p-10">Responder</span>
+                  <span class="badge badge-pill fl-r badge-warning lh-0 p-10">Responder a Pesquisa</span>
                 </a>
               <% end %>
             </span>
