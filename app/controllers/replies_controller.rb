@@ -44,11 +44,13 @@ class RepliesController < ApplicationController
     @question = Question.find_by_slug(params[:question])
     @reply = @question.replies.where('replies.employee_id = ?', current_employee.id).first
     asks = params.select{|x| x != 'utf8'}.select{|x| x != 'authenticity_token' }.select{|x| x != 'controller'}.select{|x| x != 'action'}.select{|x| x != 'question'}
+
     asks.keys.each_with_index do |ask, index|
       @reply.reply_options.create({option_id: asks[ask].to_i, ask_id: ask.to_i})
     end
 
     @reply.close!
+    ReplyMailer.reply_question(@reply, @question).deliver_now
     redirect_to question_reply_path(@question, @reply)
   end
 end

@@ -35,4 +35,14 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.office365.com',
+    port:                 587,
+    domain:               'www.eagro.ag',
+    user_name:            'site@laborfit.com.br',
+    password:             'cb&IQlghhTy3',
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 end
