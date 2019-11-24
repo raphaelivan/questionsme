@@ -11,8 +11,20 @@ class RepliesController < ApplicationController
   def show
     @question = Question.find_by_slug(params[:question_id])
     @reply = @question.replies.find(params[:id])
-
-    @result = (@reply.reply_options.map(&:weight).sum - @reply.employee.years)
+    years = (@reply.employee.years * -1)
+    age = @reply.reply_options.map(&:weight).sum
+    @result = (age - years)
+    puts "-" * 80
+    puts age
+    puts years
+    puts "-" * 80
+    if years < age
+      render file: 'replies/greater'
+    elsif years > age
+      render file: 'replies/menor'
+    else
+      render file: 'replies/show'
+    end
   end
 
   def delete

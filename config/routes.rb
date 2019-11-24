@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :sectors
     resources :employees
 
+    get 'report_general', to: 'companies#report_general'
     resources :questions do
       get :view, on: :member
     end

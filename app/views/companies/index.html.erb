@@ -12,6 +12,7 @@
                             <th scope="col">Grupo de Pesquisas</th>
                             <th scope="col">Questionários</th>
                             <th scope="col">Usuários</th>
+                            <th scope="col"></th>
                             <th colspan='2'> </th>
                         </tr>
                     </thead>
@@ -28,6 +29,11 @@
                             </td>
                             <td class="nav-item dropdown">
                               <a class="sidebar-link" href="<%= company_employees_path(company) %>"><span class="icon-user"><i class="c-brown-500 ti-user"></i> </span><span class="title">Usuários</span></a>
+                            </td>
+                            <td>
+                                <a href="<%= company_report_general_path(company) %> "> 
+                                    <i class='fa fa-pie-chart'></i>
+                                </a>
                             </td>
                             <td><%= link_to 'Editar', edit_company_path(company) %></td>
                             <td><%= link_to 'Deletar', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>

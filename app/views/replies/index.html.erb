@@ -9,7 +9,8 @@
                         <tr>
                             <th scope="col">Usuário</th>
                             <th scope="col">Respondido em</th>
-                            <th scope="col">Resultado</th>
+                            <th scope="col">Idade Biológica</th>
+                            <th scope="col">Idade Qualidade</th>
                             <th> </th>
                             <th> </th>
                         </tr>
@@ -19,8 +20,8 @@
                             <tr>
 															<td><%= link_to reply.employee.name, question_reply_path(@question, reply) %> </td>
 															<td> <%= reply.end_at.to_s(:pt_time) if reply.end_at %> </td>
-															<td> <%= reply.result %> </td>
-															<td><%= link_to 'Editar Grupo', delete_reply_path(reply) %></td>
+															<td> <%= reply.employee.years * -1 %> </td>
+															<td> <%= reply.reply_options.map(&:weight).sum %> </td>
 															<td><%= link_to 'Deletar Resposta', delete_reply_path(reply) %></td>
                             </tr>
                         <% end %>
